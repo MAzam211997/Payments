@@ -1,0 +1,38 @@
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+<div class="jumbotron py-3">
+  <h1 class="display-4 text-center">Payment Detail Register</h1>
+</div>
+
+<div class="row">
+  <div class="col-md-6">
+    <app-payment-detail-form></app-payment-detail-form>
+
+  </div>
+  <div class="col-md-6">
+    <table class="table table-bordered table-hover">
+      <thead class="thead-light">
+       <tr>
+        <th>Card Owner</th>
+        <th>Card Number</th>
+        <th>Exp. Date</th>
+        <th>Actions</th>
+       </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let pd of service.paymentDetailList">
+              <td (click)="populateForm(pd)">{{pd.cardOwnerName}}</td>
+              <td (click)="populateForm(pd)">{{pd.cardNumber}}</td>
+              <td (click)="populateForm(pd)">{{pd.expirationDate}}</td>
+
+              <td>
+                <i class="far fa-trash fa-lg text-danger" (click)="onDelete(pd.paymentDetailId)"></i>
+              </td>
+        </tr>
+      </tbody>
+    </table>
+
+    <select class="list form-control" >
+        <option *ngFor="let pd of service.paymentDetailList" [value]="pd.paymentDetailId">{{pd.cardOwnerName}}</option>
+    </select>
+  </div>
+</div>

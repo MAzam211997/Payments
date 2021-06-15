@@ -1,0 +1,12 @@
+<form novalidate #form="ngForm" (submit)="onSubmit(form)" autocomplete="off">
+  <input type="hidden" name="formId" [value]="service.formData.formId" />
+  <div class="form-group">
+    <label for="">FORM NAME</label>
+    <input type="text" class="form-control" placeholder="Full Name"
+     name="formName" required [class.invalid]="formName.invalid && formName.touched" #formName="ngModel" [(ngModel)]="service.formData.formName">
+  </div>
+  <br>
+  <div class="form-group">
+    <button class="col-md-12 btn btn-info btn-lg btn-block" [disabled]="form.invalid" type="submit">SUBMIT</button>
+  </div>
+</form>
